@@ -3,7 +3,7 @@
     <mirror>
       <id>nexus-proxy</id>
       <name>Maven Repository Manager running on debian-cloud-test</name>
-      <url>http://debian-cloud-test:8081/repository/maven-central/</url>
+      <url>http://debian-cloud-test:8081/repository/maven-public/</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
