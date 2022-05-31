@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      registryUrl 'http://debian-cloud-test:8081/repository/docker-hub/'
+      registryUrl 'http://debian-cloud-test:8082/'
       image 'maven:3.8.5-eclipse-temurin-17'
     }
   }
