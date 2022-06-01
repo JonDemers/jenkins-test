@@ -1,4 +1,3 @@
 FROM eclipse-temurin:17-jre-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} .
-ENTRYPOINT ["java", "-jar", "/${JAR_FILE}"]
+COPY target/jenkins-test-*.jar jenkins-test.jar
+ENTRYPOINT ["java", "-jar", "jenkins-test.jar"]
