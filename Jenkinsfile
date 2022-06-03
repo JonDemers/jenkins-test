@@ -15,10 +15,12 @@ pipeline {
         sh 'mvn clean install -s ./settings.xml'
       }
     }
-    stage('Docker Build') {
+    stage('Docker Build and Push') {
       steps{
         script {
-          app = docker.build("${env.dockerPushRegistry}")
+          dockerImage = docker.build("${env.dockerPushRegistry}:${env.BUILD_ID}")
+          customImage.push()
+          customImage.push('latest')
         }
       }
     }
