@@ -1,7 +1,8 @@
 pipeline {
   environment {
-    dockerPushRegistry = "debian-cloud-test:8083/com.opcode.jenkins-test"
+    dockerPushRegistry = "debian-cloud-test:8083"
     dockerPushRegistryCredential = 'dockerPushRegistryCredential'
+    dockerPushImageName = "com.opcode.jenkins-test"
   }
   agent none
   stages {
@@ -18,9 +19,11 @@ pipeline {
     stage('Docker Build and Push') {
       steps{
         script {
-          dockerImage = docker.build("${env.dockerPushRegistry}:${env.BUILD_ID}")
-          dockerImage.push()
-          dockerImage.push('latest')
+          docker.withRegistry(dockerPushRegistry, dockerPushRegistryCredential) {
+            dockerImage = docker.build("${env.dockerPushImageName}:${env.BUILD_ID}")
+            dockerImage.push()
+            dockerImage.push('latest')
+          }
         }
       }
     }
