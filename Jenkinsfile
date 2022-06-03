@@ -14,6 +14,7 @@ pipeline {
       }
       steps {
         sh 'mvn clean install -s ./settings.xml'
+        pomVersion = readMavenPom(file: 'pom.xml').version
       }
     }
     stage('Docker Build') {
@@ -29,7 +30,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry(dockerPushRegistry, dockerPushRegistryCredential) {
-            dockerImage.push("${POM_VERSION}")
+            dockerImage.push(pomVersion)
             dockerImage.push('latest')
           }
         }
