@@ -29,7 +29,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry(dockerPushRegistry, dockerPushRegistryCredential) {
-            dockerImage.push(${POM_VERSION})
+            dockerImage.push("${POM_VERSION}")
             dockerImage.push('latest')
           }
         }
