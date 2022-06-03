@@ -13,7 +13,9 @@ pipeline {
         }
       }
       steps {
-        pomVersion = sh 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout'
+        script {
+          pomVersion = sh 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout'
+        }
         sh 'mvn clean install -s ./settings.xml'
       }
     }
