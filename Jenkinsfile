@@ -14,7 +14,7 @@ pipeline {
       }
       steps {
         script {
-          pomVersion = sh 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout'
+          pomVersion = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
         }
         sh 'mvn clean install -s ./settings.xml'
       }
