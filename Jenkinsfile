@@ -16,12 +16,20 @@ pipeline {
         sh 'mvn clean install -s ./settings.xml'
       }
     }
-    stage('Docker Build and Push') {
+    stage('Docker Build') {
+      steps{
+        script {
+          docker.withRegistry(dockerPushRegistry) {
+            dockerImage = docker.build(dockerPushImageName)
+          }
+        }
+      }
+    }
+    stage('Docker Push') {
       steps{
         script {
           docker.withRegistry(dockerPushRegistry, dockerPushRegistryCredential) {
-            dockerImage = docker.build("${env.dockerPushImageName}:${env.BUILD_ID}")
-            dockerImage.push()
+            dockerImage.push(${env.BUILD_ID})
             dockerImage.push('latest')
           }
         }
