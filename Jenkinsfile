@@ -13,11 +13,8 @@ pipeline {
         }
       }
       steps {
+        pomVersion = sh 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout'
         sh 'mvn clean install -s ./settings.xml'
-        script {
-          pomVersion = readMavenPom().version
-          echo("pomVersion=${pomVersion}")
-        }
       }
     }
     stage('Docker Build') {
