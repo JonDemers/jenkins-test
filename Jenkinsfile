@@ -19,8 +19,8 @@ pipeline {
       steps{
         script {
           dockerImage = docker.build("${env.dockerPushRegistry}:${env.BUILD_ID}")
-          customImage.push()
-          customImage.push('latest')
+          dockerImage.push()
+          dockerImage.push('latest')
         }
       }
     }
