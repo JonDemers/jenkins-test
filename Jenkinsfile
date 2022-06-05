@@ -39,6 +39,7 @@ pipeline {
       }
     }
     stage('Kubernetes Deploy') {
+      agent any
       steps {
         script {
           sh(script: 'kubectl apply -f k8s.yml')
