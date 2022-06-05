@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
       - name: jenkins-test
-        image: "debian-cloud-test:8083/com.opcode.jenkins-test:latest"
+        image: "debian-cloud-test:8083/com.opcode.jenkins-test:{{image_version}}"
         ports:
         - containerPort: 8080
