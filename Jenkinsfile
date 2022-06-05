@@ -41,7 +41,7 @@ pipeline {
     stage('Kubernetes Deploy') {
       agent any
       steps {
-        sh 'kubectl replace --force -f k8s.yml'
+        sh 'kubectl apply -f k8s.yml'
       }
     }
   }
