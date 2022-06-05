@@ -16,13 +16,13 @@ pipeline {
         script {
           pomVersion = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
         }
-        echo env
+        sh 'printenv'
         sh 'mvn clean install -s ./settings.xml'
       }
     }
     stage('Docker Build') {
       steps{
-        echo env
+        sh 'printenv'
         script {
           docker.withRegistry(dockerPushRegistry) {
             dockerImage = docker.build(dockerPushImageName)
@@ -32,7 +32,7 @@ pipeline {
     }
     stage('Docker Push') {
       steps{
-        echo env
+        sh 'printenv'
         script {
           docker.withRegistry(dockerPushRegistry, dockerPushRegistryCredential) {
             dockerImage.push("${env.GIT_COMMIT}")
@@ -45,7 +45,7 @@ pipeline {
     stage('Kubernetes Deploy') {
       agent any
       steps {
-        echo env
+        sh 'printenv'
         sh 'echo cat k8s.yml _ sed -r "s/{{image_version}}/${env.GIT_COMMIT}/g" _ kubectl apply -f -'
       }
     }
