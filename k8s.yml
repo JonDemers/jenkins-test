@@ -37,6 +37,8 @@ spec:
         resources:
           requests:
             cpu: "100m"
+          limits:
+            cpu: "100m"
         readinessProbe:
           httpGet:
             path: /
