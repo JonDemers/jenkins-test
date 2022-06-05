@@ -14,9 +14,9 @@ pipeline {
       }
       steps {
         script {
+          commitHash = "${env.GIT_COMMIT}"
           pomVersion = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
         }
-        commitHash = "${env.GIT_COMMIT}"
         sh 'mvn clean install -s ./settings.xml'
       }
     }
