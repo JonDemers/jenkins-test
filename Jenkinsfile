@@ -14,7 +14,6 @@ pipeline {
       }
       steps {
         script {
-          commitHash = sh(script: 'git rev-parse --short HEAD', returnStdout: true)
           pomVersion = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
         }
         sh 'mvn clean install -s ./settings.xml'
@@ -33,6 +32,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry(dockerPushRegistry, dockerPushRegistryCredential) {
+            commitHash = sh(script: 'git rev-parse --short HEAD', returnStdout: true)
             dockerImage.push(commitHash)
             dockerImage.push(pomVersion)
             dockerImage.push('latest')
