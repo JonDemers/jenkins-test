@@ -43,7 +43,7 @@ pipeline {
     stage('Kubernetes Deploy') {
       agent any
       steps {
-        sh 'echo cat k8s.yml _ sed -r "s/{{image_version}}/${commitHash}/g" _ kubectl apply -f -'
+        sh "echo cat k8s.yml _ sed -r 's/{{image_version}}/${commitHash}/g' _ kubectl apply -f -"
       }
     }
   }
