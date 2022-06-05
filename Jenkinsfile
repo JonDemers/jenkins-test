@@ -4,7 +4,6 @@ pipeline {
     dockerPushRegistryCredential = 'dockerPushRegistryCredential'
     dockerPushImageName = "com.opcode.jenkins-test"
   }
-  agent any
   stages {
     stage('Maven Build') {
       agent {
@@ -39,6 +38,7 @@ pipeline {
       }
     }
     stage('Kubernetes Deploy') {
+      agent any
       steps {
         sh 'kubectl replace --force -f k8s.yml'
       }
