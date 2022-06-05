@@ -1,5 +1,7 @@
 package com.opcode.jenkins.api;
 
+import java.util.Date;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,7 +10,8 @@ public class HelloController {
 
 	@GetMapping("/")
 	public String index() {
-		return "Hello from Spring Boot v2 !!\n";
+		return "Hello from Spring Boot v3 !!\n"
+				+ "Date: " + new Date();
 	}
 
 }
