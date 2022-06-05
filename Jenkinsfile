@@ -32,8 +32,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry(dockerPushRegistry, dockerPushRegistryCredential) {
-            commitHash = sh(script: 'git rev-parse --short HEAD', returnStdout: true)
-            dockerImage.push(commitHash)
+            dockerImage.push("${GIT_COMMIT}")
             dockerImage.push(pomVersion)
             dockerImage.push('latest')
           }
