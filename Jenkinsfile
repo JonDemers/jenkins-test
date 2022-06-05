@@ -41,7 +41,7 @@ pipeline {
     stage('Kubernetes Deploy') {
       steps {
         script {
-          sh 'kubectl apply -f k8s.yml'
+          sh(script: 'kubectl apply -f k8s.yml')
         }
       }
     }
