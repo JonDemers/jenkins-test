@@ -32,7 +32,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry(dockerPushRegistry, dockerPushRegistryCredential) {
-            dockerImage.push("${GIT_COMMIT}")
+            dockerImage.push("${env.GIT_COMMIT}")
             dockerImage.push(pomVersion)
             dockerImage.push('latest')
           }
