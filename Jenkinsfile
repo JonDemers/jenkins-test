@@ -4,6 +4,7 @@ pipeline {
     dockerPushRegistryCredential = 'dockerPushRegistryCredential'
     dockerPushImageName = "com.opcode.jenkins-test"
   }
+  agent none
   stages {
     stage('Maven Build') {
       agent {
