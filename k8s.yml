@@ -32,4 +32,14 @@ spec:
       - name: jenkins-test
         image: "debian-cloud-test:8083/com.opcode.jenkins-test:{{image_version}}"
         ports:
-        - containerPort: 8080
+        - name: rest-api
+          containerPort: 8080
+        resources:
+          requests:
+            cpu: "250m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: rest-api
+          failureThreshold: 1
+          periodSeconds: 10
