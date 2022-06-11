@@ -10,7 +10,7 @@ public class HelloController {
 
 	@GetMapping("/")
 	public String index() {
-		return "Hello from Spring Boot v8 !!\n"
+		return "Hello from Spring Boot v9 !!\n"
 				+ "Date: " + new Date() + "\n";
 	}
 
