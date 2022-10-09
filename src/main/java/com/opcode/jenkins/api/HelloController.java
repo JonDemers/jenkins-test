@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+	private final Date startTime = new Date();
+
 	@GetMapping("/")
 	public String index() {
 		return "Hello from Spring Boot v9 !!\n"
-				+ "Date: " + new Date() + "\n";
+				+ "startTime: " + startTime + "\n";
 	}
 
 }
