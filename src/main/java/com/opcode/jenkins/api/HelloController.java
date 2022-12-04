@@ -12,8 +12,7 @@ public class HelloController {
 
 	@GetMapping("/")
 	public String index() {
-		return "Hello from Spring Boot v9 !!\n"
-				+ "startTime: " + startTime + "\n";
+		return "Hello from Spring Boot v9, StartTime: " + startTime;
 	}
 
 }
