@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    dockerPushRegistry = "http://debian-cloud-test:8083"
+    dockerPushRegistry = "http://docker-registry.k8s.lan"
     dockerPushRegistryCredential = 'dockerPushRegistryCredential'
     dockerPushImageName = "com.opcode.jenkins-test"
   }
