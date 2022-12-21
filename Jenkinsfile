@@ -17,7 +17,7 @@ pipeline {
           commitHash = "${env.GIT_COMMIT}"
           pomVersion = sh(script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true)
         }
-        sh 'mvn clean install -s ./settings.xml'
+        sh 'mvn clean install'
       }
     }
     stage('Docker Build') {
