@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    dockerPushRegistry = "http://docker-registry.k8s.lan"
+    dockerPushRegistry = "http://docker-registry.k8s.lan:30501"
     dockerPushRegistryCredential = 'dockerPushRegistryCredential'
     dockerPushImageName = "com.opcode.jenkins-test"
   }

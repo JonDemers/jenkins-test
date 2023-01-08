@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: jenkins-test
-        image: "docker-registry.k8s.lan/com.opcode.jenkins-test:{{image_version}}"
+        image: "docker-registry.k8s.lan:30501/com.opcode.jenkins-test:{{image_version}}"
         ports:
         - name: rest-api
           containerPort: 8080
